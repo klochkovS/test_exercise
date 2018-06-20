@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logIn } from '../actions/actions';
 
@@ -30,6 +31,8 @@ class Login extends Component {
   render() {
     return (
       <section>
+        {console.log('1-------', this.props.user.isAuth)}
+        {this.props.user.isAuth ? <Redirect to='/profile' /> : null}
         <form>
           <label htmlFor="loggin">Логин</label>
           <input
