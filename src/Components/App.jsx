@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Menu from './Menu/Menu';
 import Home from './Home';
@@ -9,7 +9,7 @@ import Profile from './Profile';
 import NotFound from './NotFound';
 
 
-const App = () => (
+const App = ({ user }) => (
   <Router>
     <div>
       <Menu />
@@ -18,7 +18,14 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/news" component={News} />
-        <Route path="/profile" component={Profile} />
+        <Route
+          path="/profile"
+          render={() => (
+            user.isAuth ?
+              <Profile /> :
+              <Redirect to="/login" />
+          )}
+        />
         <Route component={NotFound} />
       </Switch>
     </div>
@@ -30,6 +37,5 @@ const mapStateToProps = state => (
     user: state,
   }
 );
-
 
 export default connect(mapStateToProps)(App);
