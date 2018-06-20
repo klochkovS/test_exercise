@@ -1,23 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Menu from './Menu/Menu';
 import Home from './Home';
+import Login from './Login';
 import News from './News';
 import Profile from './Profile';
-import Login from './Login';
+import NotFound from './NotFound';
 
 
-const App = props => (
+const App = () => (
   <Router>
     <div>
-      {console.log(props)}
       <Menu />
       <hr />
-      <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route path="/news" component={News} />
-      <Route path="/profile" component={Profile} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/news" component={News} />
+        <Route path="/profile" component={Profile} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   </Router>
 );
