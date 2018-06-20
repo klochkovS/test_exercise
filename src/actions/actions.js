@@ -5,7 +5,7 @@ export const logIn = inputAuthData => (
   checkAuth(inputAuthData) ?
     {
       type: C.LOG_IN,
-      userName: inputAuthData.userName,
+      userName: inputAuthData.username,
       isAuth: true,
     } :
     {

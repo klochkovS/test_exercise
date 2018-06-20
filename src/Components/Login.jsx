@@ -17,7 +17,6 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.username, this.state.password);
     this.props.onSubmit({ ...this.state });
 
   }
@@ -31,7 +30,6 @@ class Login extends Component {
   render() {
     return (
       <section>
-        {console.log('1-------', this.props.user.isAuth)}
         {this.props.user.isAuth ? <Redirect to='/profile' /> : null}
         <form>
           <label htmlFor="loggin">Логин</label>
