@@ -1,28 +1,74 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logIn } from '../actions/actions';
 
-const Login = () => {
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  const signIn = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
-    alert('It is work');
-  };
+    console.log(this.state.username, this.state.password);
+    this.props.onSubmit({ ...this.state });
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
+  }
 
-  return (
-    <section>
-      <form>
-        <label htmlFor="loggin">Логин</label>
-        <input id="loggin" type="text" onChange={handleChange} required /><br />
-        <label htmlFor="pass">Пароль</label>
-        <input id="pass" type="password" required />
-        <button onClick={signIn}>Войти</button>
-      </form>
-    </section>
-  );
+  handleChange(e) {
+    const { value } = e.target;
+    const { name } = e.target;
+    this.setState({ [name]: value });
+  }
 
-};
+  render() {
+    return (
+      <section>
+        <form>
+          <label htmlFor="loggin">Логин</label>
+          <input
+            id="loggin"
+            type="text"
+            name="username"
+            onChange={this.handleChange}
+            required
+          /><br />
+          <label htmlFor="pass">Пароль</label>
+          <input
+            id="pass"
+            type="password"
+            name="password"
+            onChange={this.handleChange}
+            required
+          />
+          <button onClick={this.handleSubmit}>Войти</button>
+        </form>
+      </section>
+    );
+  }
+}
 
-export default Login;
+// Login.propTypes = {
+//   user: PropTypes.object.isRequired,
+//   onSubmit: PropTypes.func.isRequired,
+// };
+
+const mapStateToProps = state => (
+  {
+    user: state,
+  }
+);
+
+const mapDispatchToProps = dispatch => (
+  {
+    onSubmit: inputAuthData => dispatch(logIn(inputAuthData)),
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Menu = ({ isAuth }) => (
   <header>
-    {console.log(`From menu. isAuth ${isAuth}`)}
+    {console.log(`From menu. isAuth: ${isAuth}`)}
     <ul>
       <li>
         <Link to="/">Home</Link>
@@ -21,6 +22,10 @@ const Menu = ({ isAuth }) => (
     </ul>
   </header>
 );
+
+Menu.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = state => (
   {

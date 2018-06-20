@@ -1,17 +1,21 @@
 import C from '../constants';
+import checkAuth from '../lib/checkAuth';
 
-export const logIn = userName => ({
-  type: C.LOG_IN,
-  userName,
-  isAuth: true,
-});
+export const logIn = inputAuthData => (
+  checkAuth(inputAuthData) ?
+    {
+      type: C.LOG_IN,
+      userName: inputAuthData.userName,
+      isAuth: true,
+    } :
+    {
+      type: C.LOG_FALLEN,
+      isAuth: false,
+      errorMsg: 'Неправильно указан логин и/или пароль!',
+    }
+);
 
 export const logOut = () => ({
   type: C.LOG_OUT,
   isAuth: false,
-});
-
-export const logEror = errorMsg => ({
-  type: C.LOG_FALLEN,
-  errorMsg,
 });
