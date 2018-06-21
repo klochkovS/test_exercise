@@ -11,11 +11,12 @@ export const logIn = inputAuthData => (
     {
       type: C.LOG_FALLEN,
       isAuth: false,
-      errorMsg: 'Неправильно указан логин и/или пароль!',
+      errorMsg: 'Имя пользователя или пароль введены не верно',
     }
 );
 
 export const logOut = () => ({
   type: C.LOG_OUT,
   isAuth: false,
+  errorMsg: 'Необходимо войти для продолжения.',
 });

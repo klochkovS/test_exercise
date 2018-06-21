@@ -6,14 +6,15 @@ export default (state = {}, action) => {
       return {
         ...state,
         userName: action.userName,
-        errorMsg: action.errorMsg,
         isAuth: action.isAuth,
+        errorMsg: action.errorMsg,
       };
     case C.LOG_OUT:
       return {
         ...state,
         userName: null,
         isAuth: action.isAuth,
+        errorMsg: action.errorMsg,
       };
     case C.LOG_FALLEN:
       return {

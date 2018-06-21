@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import './login.scss';
 
 class Login extends Component {
   constructor(props) {
@@ -26,27 +27,40 @@ class Login extends Component {
 
   render() {
     return (
-      <section>
-        {this.props.user.isAuth ? <Redirect to="/profile" /> : null}
-        <form>
-          <label htmlFor="loggin">Логин</label>
+      <section className="auth-form">
+        {this.props.isAuth ? <Redirect to="/profile" /> : null}
+        <h2 className="auth-form__header">Войти</h2>
+        <span className="auth-form__error-msg">
+          {this.props.erorrMsg}
+        </span>
+        <form className="input-block">
+          <label className="auth-form__input-title" htmlFor="loggin">
+            Логин
+          </label>
           <input
+            className="auth-form__input"
             id="loggin"
             type="text"
             name="username"
             onChange={this.handleChange}
+            placeholder="Ваш логин"
             required
           />
-          <br />
-          <label htmlFor="pass">Пароль</label>
+          <label className="auth-form__input-title" htmlFor="pass">
+            Пароль
+          </label>
           <input
+            className="auth-form__input"
             id="pass"
             type="password"
             name="password"
             onChange={this.handleChange}
+            placeholder="Ваш пароль"
             required
           />
-          <button onClick={this.handleSubmit}>Войти</button>
+          <button className="auth-form__button" onClick={this.handleSubmit}>
+            Войти
+          </button>
         </form>
       </section>
     );
@@ -54,7 +68,8 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  user: PropTypes.object.isRequired,
+  isAuth: PropTypes.bool.isRequired,
+  erorrMsg: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

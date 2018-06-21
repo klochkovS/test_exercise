@@ -2,8 +2,9 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers';
 
 const initialState = {
-  userName: 'test',
+  userName: '',
   isAuth: false,
+  errorMsg: 'Необходимо войти для продолжения.',
 };
 
 const saver = store => next => (action) => {

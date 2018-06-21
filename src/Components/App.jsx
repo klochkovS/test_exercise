@@ -13,7 +13,6 @@ const App = ({ isAuth }) => (
   <Router>
     <div>
       <Menu />
-      <hr />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoginContainer} />

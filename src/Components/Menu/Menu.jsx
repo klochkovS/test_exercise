@@ -3,24 +3,19 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../../actions/actions';
+import './menu.scss';
 
 const Menu = ({ isAuth, onLogOut }) => (
   <header>
     {console.log(`From menu. isAuth: ${isAuth}`)}
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/news">News</Link>
-      </li>
-      <li>
-        <Link to="/profile">Profile</Link>
-      </li>
-      <li>
-        <Link to="/login" onClick={onLogOut}>{isAuth ? 'Logout' : 'Login'}</Link>
-      </li>
-    </ul>
+    <nav className="menu">
+      <Link className="menu__link" to="/">Home</Link>
+      <Link className="menu__link" to="/news">News</Link>
+      <Link className="menu__link" to="/profile">Profile</Link>
+      <Link className="menu__link" to="/login" onClick={onLogOut}>
+        {isAuth ? 'Logout' : 'Login'}
+      </Link>
+    </nav>
   </header>
 );
 
