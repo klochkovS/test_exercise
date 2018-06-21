@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logOut } from '../../actions/actions';
 
-const Menu = ({ isAuth }) => (
+const Menu = ({ isAuth, onLogOut }) => (
   <header>
     {console.log(`From menu. isAuth: ${isAuth}`)}
     <ul>
@@ -17,7 +18,7 @@ const Menu = ({ isAuth }) => (
         <Link to="/profile">Profile</Link>
       </li>
       <li>
-        <Link to="/login">{isAuth ? 'Logout' : 'Login'}</Link>
+        <Link to="/login" onClick={onLogOut}>{isAuth ? 'Logout' : 'Login'}</Link>
       </li>
     </ul>
   </header>
@@ -25,6 +26,7 @@ const Menu = ({ isAuth }) => (
 
 Menu.propTypes = {
   isAuth: PropTypes.bool.isRequired,
+  onLogOut: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
@@ -33,4 +35,10 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps)(Menu);
+const mapDispatchToProps = dispatch => (
+  {
+    onLogOut: () => dispatch(logOut()),
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

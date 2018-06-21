@@ -18,7 +18,6 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onSubmit({ ...this.state });
-
   }
 
   handleChange(e) {
