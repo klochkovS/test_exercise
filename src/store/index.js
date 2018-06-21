@@ -8,7 +8,6 @@ const initialState = {
 
 const saver = store => next => (action) => {
   const returnValue = next(action);
-  console.log(store.getState());
   localStorage['redux-store'] = JSON.stringify(store.getState());
   return returnValue;
 };

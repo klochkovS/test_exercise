@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logIn } from '../actions/actions';
 
 class Login extends Component {
   constructor(props) {
@@ -29,7 +27,7 @@ class Login extends Component {
   render() {
     return (
       <section>
-        {this.props.user.isAuth ? <Redirect to='/profile' /> : null}
+        {this.props.user.isAuth ? <Redirect to="/profile" /> : null}
         <form>
           <label htmlFor="loggin">Логин</label>
           <input
@@ -38,7 +36,8 @@ class Login extends Component {
             name="username"
             onChange={this.handleChange}
             required
-          /><br />
+          />
+          <br />
           <label htmlFor="pass">Пароль</label>
           <input
             id="pass"
@@ -54,21 +53,9 @@ class Login extends Component {
   }
 }
 
-// Login.propTypes = {
-//   user: PropTypes.object.isRequired,
-//   onSubmit: PropTypes.func.isRequired,
-// };
+Login.propTypes = {
+  user: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = state => (
-  {
-    user: state,
-  }
-);
-
-const mapDispatchToProps = dispatch => (
-  {
-    onSubmit: inputAuthData => dispatch(logIn(inputAuthData)),
-  }
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

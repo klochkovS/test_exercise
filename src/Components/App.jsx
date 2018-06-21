@@ -1,28 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Menu from './Menu/Menu';
 import Home from './Home';
-import Login from './Login';
+import LoginContainer from '../Containers/LoginContainer';
 import News from './News';
-import Profile from './Profile';
+import ProfileContainer from '../Containers/ProfileContainer';
 import NotFound from './NotFound';
 
 
-const App = ({ user }) => (
+const App = ({ isAuth }) => (
   <Router>
     <div>
       <Menu />
       <hr />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={LoginContainer} />
         <Route path="/news" component={News} />
         <Route
           path="/profile"
           render={() => (
-            user.isAuth ?
-              <Profile /> :
+            isAuth ?
+              <ProfileContainer /> :
               <Redirect to="/login" />
           )}
         />
@@ -32,10 +32,8 @@ const App = ({ user }) => (
   </Router>
 );
 
-const mapStateToProps = state => (
-  {
-    user: state,
-  }
-);
+App.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
+};
 
-export default connect(mapStateToProps)(App);
+export default App;
