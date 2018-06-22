@@ -1,5 +1,11 @@
 ## Тестовое задание
-
+[Результат(деплой на Heroku)](https://boiling-harbor-35158.herokuapp.com)
+или 
+### Девсервер
+```bash
+git clone https://github.com/klochkovS/test_exercise.git . && yarn install && yarn build
+```
+---
 #### Задачи
 Реализовать приложение, которое умеет показывать следующие страницы:
 
