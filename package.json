@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack-dev-server --mode development",
-    "prod": "webpack --config webpack.production.js",
+    "prod": "webpack --config webpack.production.js && cp public/index.html dist/index.html",
     "postinstall": "./node_modules/webpack/bin/webpack.js --config webpack.production.js"
   },
   "devDependencies": {
