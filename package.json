@@ -2,6 +2,9 @@
   "name": "test_exercise_1",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=8.5.0"
+  },
   "repository": "https://github.com/klochkovS/test_exercise.git",
   "author": "klochkovS <fluurr@gmail.com>",
   "license": "MIT",
