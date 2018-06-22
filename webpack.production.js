@@ -6,7 +6,7 @@ module.export = {
     extensions: ['.js', '.jsx'],
   },
   output: {
-    filename: './docs/script_small.js', /* 106 KiB */
+    filename: './dist/bundle.js',
     path: path.resolve('.'),
   },
   module: {
