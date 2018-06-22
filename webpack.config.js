@@ -3,6 +3,11 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.jsx',
+  output: {
+    path: path.resolve(__dirname, 'dist/'),
+    publicPath: '/dist/',
+    filename: 'bundle.js',
+  },
   mode: 'development',
   module: {
     rules: [
@@ -20,11 +25,6 @@ module.exports = {
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   devtool: 'sourcemap',
-  output: {
-    path: path.resolve(__dirname, 'dist/'),
-    publicPath: '/dist/',
-    filename: 'bundle.js',
-  },
   devServer: {
     contentBase: path.join(__dirname, 'public/'),
     port: 3000,

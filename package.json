@@ -6,7 +6,9 @@
   "author": "klochkovS <fluurr@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack-dev-server --mode development"
+    "build": "webpack-dev-server --mode development",
+    "prod": "webpack --config webpack.production.js",
+    "postinstall": "./node_modules/webpack/bin/webpack.js --config webpack.production.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -29,6 +31,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "express": "^4.16.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
