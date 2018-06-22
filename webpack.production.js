@@ -5,6 +5,7 @@ module.export = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  entry: './src/index.jsx',
   output: {
     filename: './dist/bundle.js',
     path: path.resolve('.'),
