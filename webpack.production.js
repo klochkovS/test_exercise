@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.export = {
+module.exports = {
   mode: 'production',
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -11,17 +11,17 @@ module.export = {
     path: path.resolve('.'),
   },
   module: {
-    rules: [{
-      test: /\.jsx$/,
-      loader: 'babel-loader',
-      query: {
-        babelrc: false,
-        presets: [
-          'react', ['env', {
-            modules: false,
-          }],
-        ],
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: { presets: ['env'] },
       },
-    }],
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
 };
